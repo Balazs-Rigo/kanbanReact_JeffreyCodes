@@ -1,5 +1,4 @@
-import { Task } from "./App";
-import Task from "./data-tasks";
+import Task from "../utils/data-tasks";
 
 const TaskCard = ({task}: {
   task:Task  
