@@ -1,16 +1,20 @@
 import './App.css'
 import TaskCard from './task-card'
+import Task from './data-tasks'
 
 function App() {
-  const title = 'Develop Business Strategy';
-  const id ='BUS-3';
-  const points = 5;
-  return (
-    
+  const task: Task ={
+    title: 'Develop Business Strategy',
+    id: 'BUS-3',
+    points: 5
+  }
+
+  return (    
     <>
-      <TaskCard title={title} id={id} points={points}></TaskCard>
-      <TaskCard title='mukodik?' id='BUS-666' points='4' ></TaskCard>
-      {/* {card('Competitor Analyst', 'BUS-2', 3)}
+      <TaskCard task = {task}></TaskCard>
+      {/* <TaskCard title='Develop Business Strategy?' id='BUS-666' points='4' ></TaskCard>
+      <TaskCard title='Develop Marketing Strategy?' id='BUS-666'></TaskCard> 
+       {card('Competitor Analyst', 'BUS-2', 3)}
       {card('Develop Business Strategy', 'BUS-3', 5)}
       {card('Develop Marketing Strategy', 'BUS-4', 7)} */}
     </>
