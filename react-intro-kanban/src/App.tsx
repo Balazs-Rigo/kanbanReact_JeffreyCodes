@@ -13,19 +13,13 @@ function App() {
     }
   })
 
-  const updateTaskPoints = (task: Task, points: number) => {
+  const updateTask = (task: Task) => {
     const updatedTasks = tasks.map((t) => {
-      return t.id === task.id ? { ...t, points } : t
+      return t.id === task.id ? task : t
     })
     setTasks(updatedTasks)
   }
 
-  const updateTaskTitle = (task: Task, title: string) => {
-    const updatedTasks = tasks.map((t) => {
-      return t.id === task.id ? { ...t, title } : t
-    })
-    setTasks(updatedTasks)
-  }
 
   return (
     <div className='flex divide-x'>
@@ -38,8 +32,7 @@ function App() {
           {column.tasks.map((task) => (
             <TaskCard
               task={task}
-              updateTaskPoints={updateTaskPoints}
-              updateTaskTitle={updateTaskTitle}
+              updateTask={updateTask}
             />))}
         </div>
       ))}

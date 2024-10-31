@@ -58,12 +58,10 @@ const highPriorityIcon = (
 
 const TaskCard = ({
   task,
-  updateTaskPoints,
-  updateTaskTitle
+ updateTask
 }: {
-  task: Task;
-  updateTaskPoints: (task: Task, points: number) => void;
-  updateTaskTitle: (task: Task, title:string) => void;
+  task: Task
+  updateTask: (task:Task) => void
 }) => {
   const [isEditingTitle, setIsEditinTitle] = useState(false);
   const points = task.points || 0
@@ -74,7 +72,7 @@ const TaskCard = ({
     const nextIndex = direction === 'up' ? index + 1 : index -1;
     const newPoints = fib[nextIndex];
     if(newPoints){
-      updateTaskPoints(task, newPoints)
+      updateTask({...task, points: newPoints})
     }
   }
   return (
@@ -86,7 +84,8 @@ const TaskCard = ({
         className="w-full"
         onBlur={()=> setIsEditinTitle(false)}
         value={task.title}
-        onChange={(e) => updateTaskTitle(task, e.target.value)}
+        onChange={(e) => 
+        updateTask({...task,title:  e.target.value})}
 />
       )
       :(<div onClick={()=> setIsEditinTitle(true)}>
