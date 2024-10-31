@@ -76,7 +76,9 @@ const TaskCard = ({
     }
   }
   return (
-    <div className="border rounded-lg px-2 m-2 bg-gray-100 w-52">
+    <div draggable
+    onDragStart={(e) => {e.dataTransfer.setData("id", task.id)}}
+     className="border rounded-lg px-2 m-2 bg-gray-50 w-56">
       <div className="text-base font-base py-2">
       {isEditingTitle ? (
         <input 
