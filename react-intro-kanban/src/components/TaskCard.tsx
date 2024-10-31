@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Task from "../utils/data-tasks";
+import { Task } from '../utils/data-tasks'
 
 const lowPriorityIcon = (
   <svg
