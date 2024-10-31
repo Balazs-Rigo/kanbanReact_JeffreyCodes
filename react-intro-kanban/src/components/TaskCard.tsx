@@ -59,10 +59,13 @@ const highPriorityIcon = (
 const TaskCard = ({
   task,
   updateTaskPoints,
+  updateTaskTitle
 }: {
   task: Task;
   updateTaskPoints: (task: Task, points: number) => void;
+  updateTaskTitle: (task: Task, title:string) => void;
 }) => {
+  const [isEditingTitle, setIsEditinTitle] = useState(false);
   const points = task.points || 0
   const updatePoints = (direction: 'up' | 'down') => {
 
@@ -76,10 +79,23 @@ const TaskCard = ({
   }
   return (
     <div className="border rounded-lg px-2 m-2 bg-gray-100 w-52">
-      <div className="text-base font-base py-2">{task.title}</div>
+      <div className="text-base font-base py-2">
+      {isEditingTitle ? (
+        <input 
+        autoFocus
+        className="w-full"
+        onBlur={()=> setIsEditinTitle(false)}
+        value={task.title}
+        onChange={(e) => updateTaskTitle(task, e.target.value)}
+/>
+      )
+      :(<div onClick={()=> setIsEditinTitle(true)}>
+        {task.title}        
+        </div>)}  
+        </div>    
       <div className="flex gap-4 justify-between py-2 text-gray-700 text-sm">
         <div className="flex gap-2">
-          <div>{task.id}          </div>
+          <div>{task.id}</div>
           {task.priority === "high" && highPriorityIcon}
           {task.priority === "medium" && mediumPriorityIcon}
           {task.priority === "low" && lowPriorityIcon}
